@@ -1,7 +1,7 @@
 clc; close all; clear;
 
 % Call ODE
-%[t,X] = rendezvous_sim();
+[t,X] = rendezvous_sim();
 
 % % Plotting
 % figure();
@@ -16,14 +16,14 @@ clc; close all; clear;
 %[A, ~] = cw_dynamics(n);
 %validate(x0, n, A);
 
-%animate_rendezvous(t, X)
+animate_rendezvous(t, X)
 %animate_rendezvous_cw(t,X)
 
  %plot_thrust call
- [x0, t_span, n] = orbital_params();
- [A, B] = cw_dynamics(n);
- K = lqr_controller(A, B);
- [t, X] = rendezvous_sim();
- plot_thrust(t, X, K);
+ %[x0, t_span, n] = orbital_params();
+ %[A, B] = cw_dynamics(n);
+ %K = lqr_controller(A, B);
+% [t, X] = rendezvous_sim();
+ %plot_thrust(t, X, K);
 
-monte_carlo_analysis();
+%monte_carlo_analysis();

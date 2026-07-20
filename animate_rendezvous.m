@@ -29,6 +29,8 @@ targetPt = plot3(NaN, NaN, NaN, 'ro', 'MarkerFaceColor', 'r', 'MarkerSize', 10);
 legend([chaserPt, targetPt], {'Chaser', 'Target'});
 
 span = 8; % km, half-width of the viewing window — tune to your initial offset
+gif_filename = 'figures/rendezvous.gif';
+frame_skip = 5; % capture every 5th frame
 
 for i = 1:n_frames
     set(chaserTrail, 'XData', r_chaser_u(1:i,1), 'YData', r_chaser_u(1:i,2), 'ZData', r_chaser_u(1:i,3));
@@ -43,6 +45,17 @@ for i = 1:n_frames
 
     drawnow;
     pause(0.03);
+if mod(i-1, frame_skip) == 0
+    frame = getframe(gcf);
+    img = frame2im(frame);
+    [imind, cm] = rgb2ind(img, 256);
+    if i == 1
+        imwrite(imind, cm, gif_filename, 'gif', 'Loopcount', inf, 'DelayTime', 0.05);
+    else
+        imwrite(imind, cm, gif_filename, 'gif', 'WriteMode', 'append', 'DelayTime', 0.05);
+    end
+end
+
 end
 
 title('Rendezvous Complete — Target Captured');
