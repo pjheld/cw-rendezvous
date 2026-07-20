@@ -2,7 +2,7 @@
 
 A MATLAB spacecraft rendezvous simulator using Clohessy-Wiltshire relative motion dynamics and a from-scratch LQR controller, validated against an analytical solution and stress-tested with a 300-trial Monte Carlo dispersion analysis.
 
-![Delta-v vs Starting Distance](figures/delta_v_vs_distance.png)
+![Rendezvous Animation](figures/rendezvous.gif)
 
 ## Key Results
 
@@ -74,6 +74,8 @@ An earlier version of this check included a spurious angular-momentum term not a
 | Final position error, mean / max | 3.05 x 10^-13 / 1.37 x 10^-12 km |
 
 Every trial converged regardless of starting position, consistent with the closed-loop system's linear, symmetric stability. Delta-v scales with starting distance in a tight, near-deterministic relationship, since the only randomized input across trials is the initial condition; no sensor or process noise is currently modeled.
+
+![Delta-v vs Starting Distance](figures/delta_v_vs_distance.png)
 
 ![Delta-v Histogram](figures/delta_v_histogram.png)
 
