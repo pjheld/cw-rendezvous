@@ -4,7 +4,7 @@
 
 function K = lqr_controller(A, B)
 
-% State cost matrix (weight position more than velocity)
+% State cost matrix 
 Q = diag([1, 1, 1, 1, 1, 1]);
 
 % Control cost matrix (penalize fuel use equally in all directions)
