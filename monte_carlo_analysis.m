@@ -40,20 +40,20 @@ fprintf('Final error: mean %.4e km, max %.4e km\n', ...
     mean(final_error_all), max(final_error_all))
 
 % Plotting
-figure;
-histogram(delta_v_all)
-xlabel('Delta-v (km/s)');
-ylabel('Frequency');
-title('Distribution of Delta-v Across Monte Carlo Trials');
-grid on;
+figure('Position', [100 100 700 450]);
+histogram(delta_v_all*1000, 20)
+xlabel('Delta-v (m/s)')
+ylabel('Frequency')
+title('Delta-v Distribution (300 trials)')
+grid on
 saveas(gcf, 'figures/delta_v_histogram.png');
 
-figure;
-scatter(starting_distance_all, delta_v_all)
+figure('Position', [100 100 700 450]);
+scatter(starting_distance_all, delta_v_all*1000, 20, 'filled')
 xlabel('Starting Distance (km)')
-ylabel('Delta-v (km/s)')
+ylabel('Delta-v (m/s)')
 title('Delta-v vs. Starting Distance')
-grid on;
+grid on
 saveas(gcf, 'figures/delta_v_vs_distance.png');
 
 end

@@ -1,10 +1,5 @@
 clc; close all; clear;
 
-
-
-[x0, ~, n, ~] = orbital_params();
-[A,~] = cw_dynamics(n);
-validate(x0,n,A);
-
-
-
+% Single rendezvous example with animation
+[t, X] = rendezvous_sim();
+animate_rendezvous(t, X)
